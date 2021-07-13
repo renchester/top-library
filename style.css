@@ -30,16 +30,29 @@ header {
 }
 
 .lib-header {
-  font-size: 2rem;
+  font-size: 3rem;
+  font-family: 'Vidaloka', Cambria, Cochin, Georgia, Times, 'Times New Roman',
+    serif;
+  font-weight: 900;
 }
 
 .lib-log {
   display: grid;
   grid-template-columns: repeat(2, auto);
+  font-family: 'Open Sans', Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #f24236;
+  padding: 1.5rem;
+  border-radius: 6px;
 }
 
 .log-title {
   grid-column: span 2;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+.log-count {
+  padding-left: 1rem;
 }
 
 .book-container {
@@ -63,7 +76,8 @@ header {
   position: relative;
   width: 240px;
   height: 360px;
-  background-color: rgb(95, 223, 138);
+  background-color: #2e86ab;
+  color: white;
   /* background: linear-gradient(
     to bottom left,
     rgb(16, 181, 187),
@@ -145,14 +159,14 @@ header {
 
 .book-window {
   position: absolute;
-  background-color: rgba(0, 128, 128, 0.712);
+  background-color: #f6f5ae;
+  color: black;
   border-radius: 6px;
   bottom: 2rem;
   left: 1.5rem;
   right: 1rem;
   padding: 0.75rem;
   font-size: 0.85rem;
-  color: white;
 }
 
 .book-info {
@@ -174,7 +188,7 @@ header {
 .btn-add-book {
   width: var(--btn-add-size);
   height: var(--btn-add-size);
-  background: rgb(48, 75, 75);
+  background: #f24236;
   border-radius: 50px;
   box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.6);
   transition: all ease-in-out 500ms;
@@ -182,7 +196,6 @@ header {
 
 .btn-add-book:hover {
   transform: rotate(180deg) scale(1.25);
-  background: rgb(84, 124, 124);
 }
 
 .material-icons.icons-add {
