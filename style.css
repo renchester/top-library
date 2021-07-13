@@ -204,6 +204,23 @@ header {
   font-size: 3rem;
 }
 
+/*  FORM FOR BOOK */
+
+.form-book {
+  display: flex;
+  flex-direction: column;
+  /* position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; */
+  background-color: rgb(190, 190, 233);
+  z-index: 5;
+  width: 800px;
+  padding: 1.5rem;
+}
+
+/* HELPER FUNCTIONS */
 .hidden {
   display: none;
 }
