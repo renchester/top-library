@@ -9,16 +9,45 @@
   box-sizing: border-box;
 }
 
+body {
+  position: relative;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem auto;
+  padding: 0 4rem;
+}
+
+.lib-header {
+  font-size: 2rem;
+}
+
+.lib-log {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+}
+
+.log-title {
+  grid-column: span 2;
+}
+
 .book-container {
   display: grid;
   grid-template-columns: repeat(3, auto);
   justify-content: center;
   align-items: flex-start;
   align-content: flex-start;
-  border: 2px solid black;
 }
 
 .book-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   margin: 10px 2rem;
@@ -30,47 +59,120 @@
   position: relative;
   width: 240px;
   height: 360px;
-  /* background-color: rgb(143, 192, 159); */
-  background: linear-gradient(
+  background-color: rgb(95, 223, 138);
+  /* background: linear-gradient(
     to bottom left,
     rgb(16, 181, 187),
     rgb(45, 255, 150)
-  );
+  ); */
   border: 0.5px solid rgb(0, 0, 0);
   border-radius: 3px;
-  padding: 1rem 0.5rem 1rem 1.8rem;
+  padding: 2.1rem 1rem 1rem 1.5rem;
   box-shadow: -2px 2px 6px 0px rgba(0, 0, 0, 0.6);
+  text-align: center;
+  font-family: 'Open Sans', Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .book::before {
   content: '';
   height: 100%;
-  width: 10px;
+  width: 7px;
   background: linear-gradient(
     to right,
     rgba(0, 0, 0, 0.15),
     white,
-    rgba(0, 0, 0, 0.27)
+    rgba(0, 0, 0, 0.507)
   );
   mix-blend-mode: multiply;
   z-index: 2;
   position: absolute;
   top: 0;
-  left: 7.5px;
+  left: 7px;
 }
 
 .book-title {
-  font-size: 1.2rem;
+  font-family: 'Marcellus', Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1.5rem;
   font-weight: 900;
+  text-transform: capitalize;
 }
 
 .book-author {
+  padding-top: 0.5rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.btn-del-book,
+.btn-finished {
+  position: absolute;
+  z-index: 3;
+  /* top: -15px;
+  right: -20px; */
+  color: white;
+  border-radius: 50px;
+  text-align: center;
+  vertical-align: middle;
+  transition: all ease-in-out 150ms;
+}
+
+.btn-del-book {
+  top: -10px;
+  right: -10px;
+  background-color: rgba(241, 79, 79, 0.959);
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.89);
+}
+
+.btn-finished {
+  background-color: green;
+}
+
+.btn-del-book:hover {
+  transform: scale(1.1);
+}
+
+.material-icons.icons-delete,
+.material-icons.icons-finished {
+  padding: 0.5rem;
   font-size: 1.1rem;
-  padding-top: 0.3rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.767);
+}
+
+.book-window {
+  position: absolute;
+  background-color: rgba(0, 128, 128, 0.712);
+  border-radius: 6px;
+  bottom: 2rem;
+  left: 1.5rem;
+  right: 1rem;
+  padding: 0.75rem;
+  font-size: 0.85rem;
+  color: white;
 }
 
 .book-info {
   display: flex;
   justify-content: space-between;
   padding-top: 0.6rem;
+}
+
+.btn-wrapper {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 2rem;
+}
+
+.btn-add-book {
+  padding: 0.5rem;
+  background: rgb(48, 75, 75);
+  border-radius: 50px;
+  box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.6);
+}
+
+.material-icons.icons-add {
+  color: white;
+  font-weight: 900;
+  font-size: 4rem;
 }
