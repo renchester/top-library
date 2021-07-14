@@ -92,19 +92,27 @@ function displayBooks() {
             </button>
           </div>
         </div>
-        <!-- <div class="book-info">
-          <p class="book-has-read">60%</p>
-        </div> -->
+         <div class="book-info">
+          <div class="toggle-read">
+            <label for="read-status" class="toggle-label"
+              ><span class="toggle-on">Mark as read:</span></label
+            >
+            <input type="checkbox" name="read-status" id="read-status" ${
+              book.hasRead === 'read' ? 'checked' : ''
+            }/>
+          </div>
+        </div>
       </div>`
     )
   );
 
-  addHover();
+  addEventsToBook();
 }
 
-function addHover() {
+function addEventsToBook() {
   const bookCards = document.querySelectorAll('.book-card');
   const btnDelBook = document.querySelector('.btn-del-book');
+  const readToggle = document.getElementById('read-status');
 
   bookCards.forEach((book) => {
     book.addEventListener('mouseover', hoverOnBook);
@@ -112,6 +120,8 @@ function addHover() {
   });
 
   btnDelBook.addEventListener('click', delBookFromLibrary);
+
+  readToggle.addEventListener('input', markAsRead);
 }
 
 function hoverOnBook(e) {
@@ -168,6 +178,19 @@ function deleteErrors() {
   document
     .querySelectorAll('.error-message')
     .forEach((el) => (el.textContent = ''));
+}
+
+function markAsRead(e) {
+  const readToggle = document.getElementById('read-status');
+  const book = e.target.closest('.book-card').querySelector('.book');
+
+  console.log(readToggle['checked'] === true);
+
+  if (readToggle['checked']) {
+    book.style.backgroundColor = '#F5F749';
+  } else if (!readToggle['checked']) {
+    book.style.backgroundColor = '#2e86ab';
+  }
 }
 
 const book1 = new Book(
