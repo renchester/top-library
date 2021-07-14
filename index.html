@@ -62,12 +62,67 @@
     </div>
 
     <form action="" method="" class="form-book">
-      <label for="book-author">Book author:</label>
-      <input type="text" name="book-author" class="input-author" />
-      <label for="book-title">Book title:</label>
-      <input type="text" name="book-title" class="input-title" />
-      <label for="book-pages">Book pages:</label>
-      <input type="text" name="book-pages" class="input-pages" />
+      <legend>ADD A BOOK TO YOUR LIBRARY</legend>
+      <ul>
+        <li>
+          <label for="input-author">
+            <span class="input-label"> Book author:</span>
+            <strong><abbr title="required">*</abbr></strong>
+          </label>
+          <br />
+          <input type="text" name="input-author" id="input-author" />
+        </li>
+        <li>
+          <label for="input-title">
+            <span class="input-label"> Book title:</span>
+            <strong><abbr title="required">*</abbr></strong>
+          </label>
+          <br />
+          <input type="text" name="input-title" id="input-title" />
+        </li>
+        <li>
+          <label for="input-pages">
+            <span class="input-label"> No. of pages:</span>
+            <strong><abbr title="required">*</abbr></strong>
+          </label>
+          <br />
+          <input type="text" name="input-pages" id="input-pages" />
+        </li>
+
+        <!-- <li>
+          <legend class="input-label">Read status:</legend>
+          <br />
+          <label for="input-read">
+            <input type="radio" id="input-read" name="input-read" />Read</label
+          >
+          <label for="input-reading">
+            <input
+              type="radio"
+              id="input-reading"
+              name="input-reading"
+            />Currently reading</label
+          >
+          <label for="input-want">
+            <input type="radio" id="input-want" name="input-want" />Want to
+            read</label
+          >
+        </li> -->
+
+        <li>
+          <label for="input-read">Read status:</label>
+          <br />
+          <select id="input-read" name="read-status">
+            <option value="none" selected disabled hidden>
+              Have you read this book?
+            </option>
+            <option value="has-read">Read</option>
+            <option value="currently-reading">Currently reading</option>
+            <option value="want">Want to read</option>
+          </select>
+        </li>
+      </ul>
+      <button class="btn-clear" type="reset">Clear all fields</button>
+      <button class="btn-submit" type="submit">Submit</button>
     </form>
     <div class="overlay"></div>
     <script src="script.js"></script>
