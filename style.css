@@ -214,8 +214,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 4;
-  background-color: rgba(0, 0, 0, 0.65);
+  z-index: 5;
   align-items: center;
 }
 
@@ -235,12 +234,15 @@ header {
 }
 
 .form-input {
+  display: flex;
+  flex-direction: column;
   padding: 0.5rem 0;
 }
 
 .input-field {
-  width: 100%;
-  padding: 0.2rem 10px;
+  width: 360px;
+  padding: 0.5rem 10px;
+  margin-top: 0.5rem;
 }
 
 .btn-container {
@@ -250,15 +252,22 @@ header {
 
 .btn-clear,
 .btn-submit {
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  border-radius: 5px;
+  padding: 0.5rem;
+  background-color: white;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.664);
 }
 
 .btn-clear {
   flex-grow: 1;
+  width: 20%;
+  margin-right: 5px;
 }
 
 .btn-submit {
   flex-grow: 2;
+  margin-left: 5px;
 }
 
 /* HELPER STYLES */
@@ -275,5 +284,5 @@ header {
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.65);
-  z-index: 3;
+  z-index: 4;
 }
