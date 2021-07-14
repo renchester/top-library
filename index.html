@@ -33,7 +33,7 @@
       </div>
     </header>
     <main class="book-container">
-      <div class="book-card">
+      <!-- <div class="book-card">
         <div class="book">
           <p class="book-title">ONE HUNDRED YEARS OF SOLITUDE</p>
           <p class="book-author">Gabriel Garcia Marquez</p>
@@ -52,25 +52,18 @@
         <div class="book-info">
           <p class="book-has-read">60%</p>
         </div>
-      </div>
+      </div> -->
     </main>
-
-    <div class="btn-wrapper">
-      <button class="btn btn-add-book">
-        <span class="material-icons icons-add"> add </span>
-      </button>
-    </div>
 
     <div class="form-container hidden">
       <form class="form-book">
-        <legend>ADD A BOOK TO YOUR LIBRARY</legend>
+        <legend class="form-legend">ADD A BOOK TO YOUR LIBRARY</legend>
         <ul>
           <li class="form-input">
             <label for="input-title">
               <span class="input-label"> Book title:</span>
               <strong><abbr title="required">*</abbr></strong>
             </label>
-            <br />
             <input
               type="text"
               name="input-title"
@@ -79,13 +72,13 @@
               class="input-field"
               required
             />
+            <p class="error-message error-title"></p>
           </li>
           <li class="form-input">
             <label for="input-author">
               <span class="input-label"> Book author:</span>
               <strong><abbr title="required">*</abbr></strong>
             </label>
-            <br />
             <input
               type="text"
               name="input-author"
@@ -94,12 +87,12 @@
               class="input-field"
               required
             />
+            <p class="error-message error-author"></p>
           </li>
           <li class="form-input">
             <label for="input-pages">
               <span class="input-label"> No. of pages:</span>
             </label>
-            <br />
             <input
               type="number"
               name="input-pages"
@@ -113,8 +106,12 @@
               <span class="input-label">Read status:</span>
               <strong><abbr title="required">*</abbr></strong>
             </label>
-            <br />
-            <select id="input-read" name="read-status" class="input-field">
+            <select
+              id="input-read"
+              name="read-status"
+              class="input-field"
+              required
+            >
               <option value="none" selected disabled hidden>
                 Have you read this book?
               </option>
@@ -122,10 +119,10 @@
               <option value="reading">Currently reading</option>
               <option value="want">Want to read</option>
             </select>
+            <p class="error-message error-read"></p>
           </li>
           <!-- <li>
           <label for="date-started"> Date started reading this book: </label>
-          <br />
           <input type="date" name="date-started" id="date-started" />
         </li> -->
         </ul>
@@ -134,8 +131,15 @@
           <button class="btn btn-submit" type="submit">Submit</button>
         </div>
       </form>
+      <div class="overlay hidden"></div>
     </div>
-    <div class="overlay hidden"></div>
+
+    <div class="btn-wrapper">
+      <button class="btn btn-add-book">
+        <span class="material-icons icons-add"> add </span>
+      </button>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
