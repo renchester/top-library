@@ -129,6 +129,7 @@ function hideForm(e) {
 }
 
 function showForm(e) {
+  deleteErrors();
   formContainer.classList.remove('hidden');
   overlay.classList.remove('hidden');
 }
@@ -136,9 +137,7 @@ function showForm(e) {
 function validateBook(arr) {
   const [title, author, pages, hasRead] = arr;
 
-  document
-    .querySelectorAll('.error-message')
-    .forEach((el) => (el.textContent = ''));
+  deleteErrors();
 
   if (!title) {
     document.querySelector(
@@ -163,6 +162,12 @@ function validateBook(arr) {
   } else if (title && author && hasRead) {
     return true;
   }
+}
+
+function deleteErrors() {
+  document
+    .querySelectorAll('.error-message')
+    .forEach((el) => (el.textContent = ''));
 }
 
 const book1 = new Book(
