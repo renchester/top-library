@@ -5,14 +5,17 @@
 const bookCards = document.querySelectorAll('.book-card');
 const btnAddBook = document.querySelector('.btn-add-book');
 
+const formContainer = document.querySelector('.form-container');
 const form = document.querySelector('.form-book');
 const btnSubmit = document.querySelector('.btn-submit');
+
+const overlay = document.querySelector('.overlay');
 
 // State
 
 let myLibrary = [];
 
-function Book(title, author, pages, hasRead = false) {
+function Book(title, author, pages, hasRead = 'read') {
   this.title = title;
   this.author = author;
   this.pages = pages;
@@ -21,6 +24,7 @@ function Book(title, author, pages, hasRead = false) {
 
 function addBookToLibrary(e) {
   e.preventDefault();
+  formContainer.classList.remove('hidden');
 
   const bookTitle = document.getElementById('input-title').value;
   const bookAuthor = document.getElementById('input-author').value;
@@ -41,6 +45,11 @@ function hoverOnBook(e) {
   }
 }
 
+function toggleFormDisplay(e) {
+  if (e.target.classList.contains('form-book')) return;
+  formContainer.classList.add('hidden');
+}
+
 const book1 = new Book(
   'One Hundred Years of Solitude',
   'Gabriel Garcia Marquez',
@@ -56,3 +65,5 @@ bookCards.forEach((book) => {
 btnAddBook.addEventListener('click', addBookToLibrary);
 
 btnSubmit.addEventListener('click', addBookToLibrary);
+
+formContainer.addEventListener('click', toggleFormDisplay);
