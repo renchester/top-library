@@ -33,7 +33,7 @@
       </div>
     </header>
     <main class="book-container">
-      <!-- <div class="book-card">
+      <div class="book-card">
         <div class="book">
           <p class="book-title">ONE HUNDRED YEARS OF SOLITUDE</p>
           <p class="book-author">Gabriel Garcia Marquez</p>
@@ -50,9 +50,15 @@
           </div>
         </div>
         <div class="book-info">
-          <p class="book-has-read">60%</p>
+          <!-- <p class="read-progress">60%</p> -->
+          <div class="toggle-read">
+            <label for="read-status" class="toggle-label"
+              ><span class="toggle-on">Mark as read:</span></label
+            >
+            <input type="checkbox" name="read-status" id="read-status" />
+          </div>
         </div>
-      </div> -->
+      </div>
     </main>
 
     <div class="form-container hidden">
@@ -108,7 +114,7 @@
             </label>
             <select
               id="input-read"
-              name="read-status"
+              name="input-read"
               class="input-field"
               required
             >

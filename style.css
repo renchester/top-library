@@ -172,9 +172,64 @@ header {
 
 .book-info {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding-top: 0.6rem;
+  vertical-align: baseline;
 }
+
+/*  TOGGLE SWITCH */
+
+.toggle-read {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.toggle-label {
+  padding-right: 0.5rem;
+}
+
+input[type='checkbox'] {
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
+  width: 44px;
+  height: 24px;
+  border-radius: 12px;
+  border: 1px solid black;
+  background: #eee;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+input[type='checkbox']::before {
+  width: 16px;
+  height: 16px;
+  border-radius: 9px;
+  background-color: black;
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  transition: all 0.4s;
+}
+
+input[type='checkbox']:checked {
+  background-color: #11cc8e;
+  transition: all 0.4s;
+}
+
+input[type='checkbox']:checked::before {
+  left: 55%;
+  transition: all 0.4s;
+}
+
+input:focus {
+  box-shadow: 0px 0px 3px 0px black;
+}
+
+/*  ADD NEW BOOK BUTTON */
 
 .btn-wrapper {
   display: flex;
