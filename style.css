@@ -113,7 +113,7 @@ header {
   font-family: 'Marcellus', Verdana, Geneva, Tahoma, sans-serif;
   font-size: 1.5rem;
   font-weight: 900;
-  text-transform: capitalize;
+  text-transform: uppercase;
 }
 
 .book-author {
@@ -233,6 +233,14 @@ header {
   border-radius: 10px;
 }
 
+.form-legend {
+  font-size: 1.5rem;
+  font-family: 'Vidaloka', Cambria, Cochin, Georgia, Times, 'Times New Roman',
+    serif;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
 .form-input {
   display: flex;
   flex-direction: column;
@@ -285,4 +293,11 @@ header {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.65);
   z-index: 4;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+  padding-top: 0.3rem;
+  margin-left: 0.6rem;
 }
