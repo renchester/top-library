@@ -11,6 +11,11 @@ const btnSubmit = document.querySelector('.btn-submit');
 
 const overlay = document.querySelector('.overlay');
 
+const bookTitle = document.getElementById('input-title');
+const bookAuthor = document.getElementById('input-author');
+const bookPages = document.getElementById('input-pages');
+const bookHasRead = document.getElementById('input-read');
+
 // State
 
 let myLibrary = [];
@@ -24,14 +29,23 @@ function Book(title, author, pages, hasRead = 'read') {
 
 function addBookToLibrary(e) {
   e.preventDefault();
-  formContainer.classList.remove('hidden');
 
-  const bookTitle = document.getElementById('input-title').value;
-  const bookAuthor = document.getElementById('input-author').value;
-  const bookPages = document.getElementById('input-pages').value;
-  const bookHasRead = document.getElementById('input-read').value;
+  const arr = [];
+  form
+    .querySelectorAll('.input-field')
+    .forEach((field) => arr.push(field.value));
 
-  const book = new Book(bookTitle, bookAuthor, bookPages, bookHasRead);
+  if (!validateBook(arr)) return;
+
+  const book = new Book(
+    bookTitle.value,
+    bookAuthor.value,
+    bookPages.value,
+    bookHasRead.value
+  );
+
+  form.reset();
+  hideForm();
 }
 
 function displayBooks() {}
@@ -45,9 +59,23 @@ function hoverOnBook(e) {
   }
 }
 
-function toggleFormDisplay(e) {
-  if (e.target.classList.contains('form-book')) return;
+function hideForm(e) {
   formContainer.classList.add('hidden');
+  overlay.classList.add('hidden');
+}
+
+function showForm(e) {
+  formContainer.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+}
+
+function validateBook(arr) {
+  console.log(arr);
+  const [title, author, pages, readStatus] = arr;
+
+  if (!title) {
+    const titleError = 1;
+  }
 }
 
 const book1 = new Book(
@@ -62,8 +90,9 @@ bookCards.forEach((book) => {
   book.addEventListener('mouseover', hoverOnBook);
   book.addEventListener('mouseout', hoverOnBook);
 });
-btnAddBook.addEventListener('click', addBookToLibrary);
+
+btnAddBook.addEventListener('click', showForm);
 
 btnSubmit.addEventListener('click', addBookToLibrary);
 
-formContainer.addEventListener('click', toggleFormDisplay);
+overlay.addEventListener('click', hideForm);
