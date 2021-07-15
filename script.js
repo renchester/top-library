@@ -58,11 +58,7 @@ function addBookToLibrary(e) {
 }
 
 function delBookFromLibrary(e) {
-  const bookToDelete = myLibrary.find(
-    (book) =>
-      `${book.author.split(' ').splice(-1, 1)}-${book.title}` ===
-      e.target.closest('.book-card').dataset.id
-  );
+  const bookToDelete = matchBook(e);
 
   const indexToDelete = myLibrary.indexOf(bookToDelete);
 
@@ -206,31 +202,25 @@ function deleteErrors() {
 function markAsRead(e) {
   const bookCard = e.target.closest('.book-card');
   const book = bookCard.querySelector('.book');
-  const bookToMark = myLibrary.find(
-    (libBook) =>
-      bookCard.dataset.id ===
-      `${libBook.author.split(' ').splice(-1, 1)}-${libBook.title}`
-  );
+  const bookToMark = matchBook(e);
+  const indexToMark = myLibrary.indexOf(bookToMark);
 
   book.classList.toggle('book-has-read');
 
   bookToMark.hasRead = bookToMark.hasRead !== 'read' ? 'read' : 'reading';
 
-  const bookToDelete = myLibrary.find(
-    (book) =>
-      `${book.author.split(' ').splice(-1, 1)}-${book.title}` ===
-      e.target.closest('.book-card').dataset.id
-  );
+  myLibrary.splice(indexToMark, 1, bookToMark);
 
-  const indexToDelete = myLibrary.indexOf(bookToDelete);
-
-  console.log(bookToDelete, indexToDelete);
-
-  myLibrary.splice(indexToDelete, 1, bookToMark);
-
-  console.log(myLibrary);
   displayBooks();
   updateLogs();
+}
+
+function matchBook(e) {
+  return myLibrary.find(
+    (book) =>
+      e.target.closest('.book-card').dataset.id ===
+      `${book.author.split(' ').splice(-1, 1)}-${book.title}`
+  );
 }
 
 // Event Listeners
