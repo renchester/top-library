@@ -78,9 +78,7 @@ function displayBooks() {
       <div class="book-card" data-id="${book.author.split(' ').splice(-1, 1)}-${
         book.title
       }">
-        <div class="book ${
-          book.hasRead === 'read' ? 'book-has-read' : 'book-unread'
-        }">
+        <div class="book ${book.hasRead === 'read' ? 'book-has-read' : ''}">
           <p class="book-title">${book.title}</p>
           <p class="book-author">${book.author}</p>
           <div class="book-hover hidden">
@@ -128,7 +126,7 @@ function addEventsToBook() {
 }
 
 function hoverOnBook(e) {
-  const book = document.querySelector('.book-hover');
+  const book = e.target.closest('.book-card').querySelector('.book-hover');
   if (e.type === 'mouseover') {
     book.classList.remove('hidden');
   } else if (e.type === 'mouseout') {
@@ -187,13 +185,7 @@ function markAsRead(e) {
   const readToggle = document.getElementById('read-status');
   const book = e.target.closest('.book-card').querySelector('.book');
 
-  console.log(readToggle['checked'] === true);
-
-  if (readToggle['checked']) {
-    book.style.backgroundColor = '#F5F749';
-  } else if (!readToggle['checked']) {
-    book.style.backgroundColor = '#2e86ab';
-  }
+  book.classList.toggle('book-has-read');
 }
 
 const book1 = new Book(

@@ -77,6 +77,7 @@ header {
   position: relative;
   width: 240px;
   height: 360px;
+  background-color: #2e86ab;
   color: white;
   /* background: linear-gradient(
     to bottom left,
@@ -93,10 +94,7 @@ header {
 
 .book-has-read {
   background-color: #f5f749;
-}
-
-.book-unread {
-  background-color: #2e86ab;
+  color: black;
 }
 
 .book::before {
