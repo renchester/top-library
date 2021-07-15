@@ -87,7 +87,7 @@ function displayBooks() {
           <p class="book-title">${book.title}</p>
           <p class="book-author">${book.author}</p>
           <div class="book-hover hidden">
-            <div class="book-window">
+            <div class="book-window ${book.pages ? '' : 'hidden'}">
               <p class="pages-wrapper">
                 <span class="book-pages">${book.pages}</span> pages ${
         book.hasRead === 'tbr' ? 'to read' : book.hasRead
@@ -190,7 +190,14 @@ function validateBook(arr) {
     ).textContent = `Read status input is invalid.`;
   }
 
-  if (!title || !author || !hasRead) {
+  if (
+    !title ||
+    !author ||
+    !hasRead ||
+    hasRead === 'none' ||
+    pages < 0 ||
+    isNaN(pages)
+  ) {
     return false;
   } else if (title && author && hasRead) {
     return true;
