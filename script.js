@@ -74,7 +74,14 @@ function delBookFromLibrary(e) {
 function displayBooks() {
   bookContainer.innerHTML = '';
 
-  if (!myLibrary.length) return;
+  if (!myLibrary.length) {
+    updateLogs();
+    bookContainer.innerHTML = `
+    <div class="placeholder-div">
+      <p class="placeholder-text">The library is currently empty</p>
+    </div>`;
+    return;
+  }
 
   myLibrary.forEach((book) =>
     bookContainer.insertAdjacentHTML(

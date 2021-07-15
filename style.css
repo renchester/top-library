@@ -32,8 +32,8 @@ header {
 
 .lib-header {
   font-size: 3rem;
-  font-family: 'Vidaloka', Cambria, Cochin, Georgia, Times, 'Times New Roman',
-    serif;
+  font-family: 'Marcellus', 'Vidaloka', Cambria, Cochin, Georgia, Times,
+    'Times New Roman', serif;
 }
 
 /*  LIBRARY LOG */
@@ -88,11 +88,6 @@ header {
   height: 360px;
   background-color: #2e86ab;
   color: white;
-  /* background: linear-gradient(
-    to bottom left,
-    rgb(16, 181, 187),
-    rgb(45, 255, 150)
-  ); */
   border: 0.5px solid rgb(0, 0, 0);
   border-radius: 3px;
   padding: 2.1rem 1rem 1rem 1.5rem;
@@ -107,7 +102,7 @@ header {
 }
 
 .book-has-read {
-  background-color: #f5f749;
+  background-color: #41e2ba;
   color: black;
 }
 
@@ -145,8 +140,6 @@ header {
 .btn-finished {
   position: absolute;
   z-index: 2;
-  /* top: -15px;
-  right: -20px; */
   color: white;
   border-radius: 50px;
   text-align: center;
@@ -179,7 +172,7 @@ header {
 
 .book-window {
   position: absolute;
-  background-color: #41e2ba;
+  background-color: #f7e733;
   color: black;
   border-radius: 6px;
   bottom: 2rem;
@@ -308,8 +301,8 @@ input:focus {
 }
 
 .form-legend {
-  font-size: 1.5rem;
-  font-family: 'Vidaloka', Cambria, Cochin, Georgia, Times, 'Times New Roman',
+  font-size: 1.35rem;
+  font-family: 'Marcellus', Cambria, Cochin, Georgia, Times, 'Times New Roman',
     serif;
   text-align: center;
   margin-bottom: 1.5rem;
@@ -334,7 +327,6 @@ input:focus {
 
 .btn-clear,
 .btn-submit {
-  /* border: 1px solid black; */
   border-radius: 5px;
   padding: 0.5rem;
   background-color: white;
@@ -350,6 +342,20 @@ input:focus {
 .btn-submit {
   flex-grow: 2;
   margin-left: 5px;
+}
+
+/*  PLACEHOLDER */
+
+.placeholder-div {
+  margin: auto;
+  grid-column: 1 / span 3;
+}
+
+.placeholder-text {
+  font-size: 1.5rem;
+  font-family: 'Open Sans', Cambria, Cochin, Georgia, Times, 'Times New Roman',
+    serif;
+  margin: 10rem;
 }
 
 /* HELPER STYLES */
