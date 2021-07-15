@@ -117,7 +117,14 @@ function displayBooks() {
 }
 
 function updateLogs() {
+  const readArr = myLibrary.filter((book) => book.hasRead === 'read');
+  const readingArr = myLibrary.filter((book) => book.hasRead === 'reading');
+  const tbrArr = myLibrary.filter((book) => book.hasRead === 'tbr');
+
   bookCount.textContent = myLibrary.length;
+  booksRead.textContent = readArr.length;
+  booksReading.textContent = readingArr.length;
+  booksTBR.textContent = tbrArr.length;
 }
 
 function addBookEvents() {
@@ -200,13 +207,6 @@ function markAsRead(e) {
 
   book.classList.toggle('book-has-read');
 }
-
-const book1 = new Book(
-  'One Hundred Years of Solitude',
-  'Gabriel Garcia Marquez',
-  315,
-  true
-);
 
 // Event Listeners
 
