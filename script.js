@@ -50,6 +50,8 @@ function addBookToLibrary(e) {
     bookHasRead.value
   );
 
+  if (checkDuplication(book)) return;
+
   myLibrary.push(book);
   setLocalStorage();
   displayBooks();
@@ -193,6 +195,20 @@ function validateBook(arr) {
   } else if (title && author && hasRead) {
     return true;
   }
+}
+
+function checkDuplication(book) {
+  if (
+    Array.from(document.querySelectorAll('.book-card')).find(
+      (bookCard) =>
+        bookCard.dataset.id ===
+        `${book.author.split(' ').splice(-1, 1)}-${book.title}`
+    )
+  ) {
+    alert("You've already added this book!");
+    form.reset();
+    return true;
+  } else return false;
 }
 
 function deleteErrors() {
