@@ -51,6 +51,7 @@ function addBookToLibrary(e) {
   );
 
   myLibrary.push(book);
+  setLocalStorage();
   displayBooks();
 
   form.reset();
@@ -64,6 +65,7 @@ function delBookFromLibrary(e) {
 
   myLibrary.splice(indexToDelete, 1);
 
+  setLocalStorage();
   displayBooks();
 }
 
@@ -211,8 +213,8 @@ function markAsRead(e) {
 
   myLibrary.splice(indexToMark, 1, bookToMark);
 
+  setLocalStorage();
   displayBooks();
-  updateLogs();
 }
 
 function matchBook(e) {
@@ -222,6 +224,22 @@ function matchBook(e) {
       `${book.author.split(' ').splice(-1, 1)}-${book.title}`
   );
 }
+
+function setLocalStorage() {
+  localStorage.setItem('books', JSON.stringify(myLibrary));
+}
+
+function getLocalStorage() {
+  let data = JSON.parse(localStorage.getItem('books'));
+
+  if (!data) return;
+
+  myLibrary = data;
+
+  displayBooks();
+}
+
+getLocalStorage();
 
 // Event Listeners
 
