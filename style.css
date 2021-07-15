@@ -46,6 +46,11 @@ header {
   padding: 1.5rem;
   border-radius: 6px;
   color: white;
+  transition: transform ease-in 200ms;
+}
+
+.lib-log:hover {
+  transform: scale(1.02);
 }
 
 .log-title {
@@ -57,6 +62,8 @@ header {
 .log-count {
   padding-left: 1rem;
 }
+
+/*  BOOK */
 
 .book-container {
   display: grid;
@@ -92,6 +99,11 @@ header {
   box-shadow: -2px 2px 6px 0px rgba(0, 0, 0, 0.6);
   text-align: center;
   font-family: 'Open Sans', Verdana, Geneva, Tahoma, sans-serif;
+  transition: transform ease-in-out 300ms;
+}
+
+.book:hover {
+  transform: scale(1.02);
 }
 
 .book-has-read {
@@ -167,7 +179,7 @@ header {
 
 .book-window {
   position: absolute;
-  background-color: #f6f5ae;
+  background-color: #41e2ba;
   color: black;
   border-radius: 6px;
   bottom: 2rem;

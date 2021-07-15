@@ -89,9 +89,10 @@ function displayBooks() {
           <div class="book-hover hidden">
             <div class="book-window">
               <p class="pages-wrapper">
-                <span class="book-pages">${book.pages}</span> pages read since
+                <span class="book-pages">${book.pages}</span> pages ${
+        book.hasRead === 'tbr' ? 'to read' : book.hasRead
+      }
               </p>
-              <p class="book-start">July 30, 2021</p>
             </div>
             <button class="btn btn-del-book">
               <span class="material-icons icons-delete"> close </span>
@@ -203,9 +204,33 @@ function deleteErrors() {
 }
 
 function markAsRead(e) {
-  const book = e.target.closest('.book-card').querySelector('.book');
+  const bookCard = e.target.closest('.book-card');
+  const book = bookCard.querySelector('.book');
+  const bookToMark = myLibrary.find(
+    (libBook) =>
+      bookCard.dataset.id ===
+      `${libBook.author.split(' ').splice(-1, 1)}-${libBook.title}`
+  );
 
   book.classList.toggle('book-has-read');
+
+  bookToMark.hasRead = bookToMark.hasRead !== 'read' ? 'read' : 'reading';
+
+  const bookToDelete = myLibrary.find(
+    (book) =>
+      `${book.author.split(' ').splice(-1, 1)}-${book.title}` ===
+      e.target.closest('.book-card').dataset.id
+  );
+
+  const indexToDelete = myLibrary.indexOf(bookToDelete);
+
+  console.log(bookToDelete, indexToDelete);
+
+  myLibrary.splice(indexToDelete, 1, bookToMark);
+
+  console.log(myLibrary);
+  displayBooks();
+  updateLogs();
 }
 
 // Event Listeners
