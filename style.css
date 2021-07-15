@@ -34,8 +34,9 @@ header {
   font-size: 3rem;
   font-family: 'Vidaloka', Cambria, Cochin, Georgia, Times, 'Times New Roman',
     serif;
-  font-weight: 900;
 }
+
+/*  LIBRARY LOG */
 
 .lib-log {
   display: grid;
@@ -44,6 +45,7 @@ header {
   background-color: #f24236;
   padding: 1.5rem;
   border-radius: 6px;
+  color: white;
 }
 
 .log-title {

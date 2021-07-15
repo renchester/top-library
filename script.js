@@ -16,6 +16,11 @@ const bookAuthor = document.getElementById('input-author');
 const bookPages = document.getElementById('input-pages');
 const bookHasRead = document.getElementById('input-read');
 
+const bookCount = document.querySelector('.log-count.total');
+const booksRead = document.querySelector('.log-count.read');
+const booksReading = document.querySelector('.log-count.reading');
+const booksTBR = document.querySelector('.log-count.tbr');
+
 // State
 
 let myLibrary = [];
@@ -107,22 +112,31 @@ function displayBooks() {
     )
   );
 
-  addEventsToBook();
+  updateLogs();
+  addBookEvents();
 }
 
-function addEventsToBook() {
+function updateLogs() {
+  bookCount.textContent = myLibrary.length;
+}
+
+function addBookEvents() {
   const bookCards = document.querySelectorAll('.book-card');
-  const btnDelBook = document.querySelector('.btn-del-book');
-  const readToggle = document.getElementById('read-status');
 
   bookCards.forEach((book) => {
     book.addEventListener('mouseover', hoverOnBook);
     book.addEventListener('mouseout', hoverOnBook);
   });
 
-  btnDelBook.addEventListener('click', delBookFromLibrary);
+  bookCards.forEach((book) =>
+    book
+      .querySelector('.btn-del-book')
+      .addEventListener('click', delBookFromLibrary)
+  );
 
-  readToggle.addEventListener('input', markAsRead);
+  bookCards.forEach((book) =>
+    book.querySelector('#read-status').addEventListener('input', markAsRead)
+  );
 }
 
 function hoverOnBook(e) {
@@ -182,7 +196,6 @@ function deleteErrors() {
 }
 
 function markAsRead(e) {
-  const readToggle = document.getElementById('read-status');
   const book = e.target.closest('.book-card').querySelector('.book');
 
   book.classList.toggle('book-has-read');
