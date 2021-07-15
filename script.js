@@ -19,6 +19,7 @@ const bookHasRead = document.getElementById('input-read');
 // State
 
 let myLibrary = [];
+let idNum = 0;
 
 function Book(title, author, pages, hasRead = 'read') {
   this.title = title;
@@ -77,7 +78,9 @@ function displayBooks() {
       <div class="book-card" data-id="${book.author.split(' ').splice(-1, 1)}-${
         book.title
       }">
-        <div class="book">
+        <div class="book ${
+          book.hasRead === 'read' ? 'book-has-read' : 'book-unread'
+        }">
           <p class="book-title">${book.title}</p>
           <p class="book-author">${book.author}</p>
           <div class="book-hover hidden">
