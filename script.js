@@ -8,6 +8,7 @@ const btnAddBook = document.querySelector('.btn-add-book');
 const formContainer = document.querySelector('.form-container');
 const form = document.querySelector('.form-book');
 const btnSubmit = document.querySelector('.btn-submit');
+const btnCloseForm = document.querySelector('.btn-form-close');
 
 const overlay = document.querySelector('.overlay');
 
@@ -164,12 +165,12 @@ function hoverOnBook(e) {
 }
 
 function hideForm(e) {
+  deleteErrors();
   formContainer.classList.add('hidden');
   overlay.classList.add('hidden');
 }
 
 function showForm(e) {
-  deleteErrors();
   formContainer.classList.remove('hidden');
   overlay.classList.remove('hidden');
 }
@@ -276,5 +277,6 @@ getLocalStorage();
 btnAddBook.addEventListener('click', showForm);
 
 btnSubmit.addEventListener('click', addBookToLibrary);
+btnCloseForm.addEventListener('click', hideForm);
 
 overlay.addEventListener('click', hideForm);
