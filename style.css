@@ -381,3 +381,100 @@ input:focus {
   padding-top: 0.3rem;
   margin-left: 0.6rem;
 }
+
+/*  RESPONSIVE DESIGN */
+
+@media (max-width: 970px) {
+  .book-container {
+    grid-template-columns: repeat(2, 300px);
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 670px;
+    margin-top: 4rem;
+  }
+
+  .lib-log {
+    margin-top: 1.2rem;
+  }
+
+  .form-book {
+    max-width: 400px;
+    padding: 2rem;
+  }
+
+  .input-field {
+    width: 100%;
+  }
+}
+
+@media (max-width: 670px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: center;
+    width: 360px;
+    margin-top: 2.4rem;
+    padding: 0;
+  }
+
+  .lib-header {
+    font-size: 2rem;
+  }
+
+  .lib-log {
+    font-size: 0.9rem;
+    margin-top: 1.1rem;
+  }
+
+  .book-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .book-card {
+    margin: 1.4rem auto;
+  }
+
+  .book {
+    width: 185px;
+    height: 275px;
+  }
+
+  .book-title {
+    font-size: 1.3rem;
+  }
+
+  .book-author {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .btn-wrapper {
+    margin: 4rem;
+    bottom: 2rem;
+  }
+}
+
+@media (min-width: 970px) {
+  header {
+    max-width: 970px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .book-container {
+    grid-template-columns: repeat(5, 300px);
+  }
+
+  header {
+    max-width: 1570px;
+  }
+}
