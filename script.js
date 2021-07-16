@@ -25,7 +25,6 @@ const booksTBR = document.querySelector('.log-count.tbr');
 // State
 
 let myLibrary = [];
-let idNum = 0;
 
 function Book(title, author, pages, hasRead = 'read') {
   this.title = title;
@@ -59,17 +58,6 @@ function addBookToLibrary(e) {
 
   form.reset();
   hideForm();
-}
-
-function delBookFromLibrary(e) {
-  const bookToDelete = matchBook(e);
-
-  const indexToDelete = myLibrary.indexOf(bookToDelete);
-
-  myLibrary.splice(indexToDelete, 1);
-
-  setLocalStorage();
-  displayBooks();
 }
 
 function displayBooks() {
@@ -155,6 +143,17 @@ function addBookEvents() {
   );
 }
 
+function delBookFromLibrary(e) {
+  const bookToDelete = matchBook(e);
+
+  const indexToDelete = myLibrary.indexOf(bookToDelete);
+
+  myLibrary.splice(indexToDelete, 1);
+
+  setLocalStorage();
+  displayBooks();
+}
+
 function hoverOnBook(e) {
   const book = e.target.closest('.book-card').querySelector('.book-hover');
   if (e.type === 'mouseover') {
@@ -162,17 +161,6 @@ function hoverOnBook(e) {
   } else if (e.type === 'mouseout') {
     book.classList.add('hidden');
   }
-}
-
-function hideForm(e) {
-  deleteErrors();
-  formContainer.classList.add('hidden');
-  overlay.classList.add('hidden');
-}
-
-function showForm(e) {
-  formContainer.classList.remove('hidden');
-  overlay.classList.remove('hidden');
 }
 
 function validateBook(arr) {
@@ -226,12 +214,6 @@ function checkDuplication(book) {
   } else return false;
 }
 
-function deleteErrors() {
-  document
-    .querySelectorAll('.error-message')
-    .forEach((el) => (el.textContent = ''));
-}
-
 function markAsRead(e) {
   const bookCard = e.target.closest('.book-card');
   const book = bookCard.querySelector('.book');
@@ -256,6 +238,23 @@ function matchBook(e) {
   );
 }
 
+function deleteErrors() {
+  document
+    .querySelectorAll('.error-message')
+    .forEach((el) => (el.textContent = ''));
+}
+
+function hideForm(e) {
+  deleteErrors();
+  formContainer.classList.add('hidden');
+  overlay.classList.add('hidden');
+}
+
+function showForm(e) {
+  formContainer.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+}
+
 function setLocalStorage() {
   localStorage.setItem('books', JSON.stringify(myLibrary));
 }
@@ -275,8 +274,6 @@ getLocalStorage();
 // Event Listeners
 
 btnAddBook.addEventListener('click', showForm);
-
 btnSubmit.addEventListener('click', addBookToLibrary);
 btnCloseForm.addEventListener('click', hideForm);
-
 overlay.addEventListener('click', hideForm);
