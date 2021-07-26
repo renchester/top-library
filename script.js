@@ -26,11 +26,13 @@ const booksTBR = document.querySelector('.log-count.tbr');
 
 let myLibrary = [];
 
-function Book(title, author, pages, hasRead = 'read') {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.hasRead = hasRead;
+class Book {
+  constructor(title, author, pages, hasRead = 'read') {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.hasRead = hasRead;
+  }
 }
 
 function addBookToLibrary(e) {
@@ -200,6 +202,12 @@ function validateBook(arr) {
   }
 }
 
+function deleteErrors() {
+  document
+    .querySelectorAll('.error-message')
+    .forEach((el) => (el.textContent = ''));
+}
+
 function checkDuplication(book) {
   if (
     Array.from(document.querySelectorAll('.book-card')).find(
@@ -236,12 +244,6 @@ function matchBook(e) {
       e.target.closest('.book-card').dataset.id ===
       `${book.author.split(' ').splice(-1, 1)}-${book.title}`
   );
-}
-
-function deleteErrors() {
-  document
-    .querySelectorAll('.error-message')
-    .forEach((el) => (el.textContent = ''));
 }
 
 function hideForm(e) {
