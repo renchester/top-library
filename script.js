@@ -30,7 +30,7 @@ DISPLAY FUNCTIONS
 function printBookHTML(book) {
   return `<tr class="book-row" data-id="${book.bookID}">
               <td class="book-title">${book.title}</td>
-              <td class="book-author">${book.author}y</td>
+              <td class="book-author">${book.author}</td>
               <td class="book-status">
                 <select name="book_new-status" id="book_${
                   book.bookID
