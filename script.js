@@ -18,7 +18,7 @@ function persistLibrary() {
 function getLibraryFromStorage() {
   const lib = JSON.parse(localStorage.getItem('library'));
 
-  return lib || null;
+  return lib || [];
 }
 
 /*
