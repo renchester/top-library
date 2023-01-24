@@ -16,9 +16,9 @@ function persistLibrary() {
 }
 
 function getLibraryFromStorage() {
-  let lib = JSON.parse(localStorage.getItem('library'));
+  const lib = JSON.parse(localStorage.getItem('library'));
 
-  return lib ? lib : null;
+  return lib || null;
 }
 
 /*
@@ -31,11 +31,11 @@ function printBookHTML(book) {
   return `<tr class="book-row" data-id="${book.bookID}">
               <td class="book-title">${book.title}</td>
               <td class="book-author">${book.author}y</td>
-              <td class="book-status status-${book.status}">
+              <td class="book-status">
                 <select name="book_new-status" id="book_${
                   book.bookID
                 }new-status"
-                class="select--new-status">
+                class="select--new-status status-${book.status}">
                   <option value="read" ${
                     book.status === 'read' ? 'selected' : ''
                   } >Read</option>
@@ -47,7 +47,9 @@ function printBookHTML(book) {
                   }>Unread</option>
                 </select>
               </td>  
-              <td class="book-delete">Delete</td>
+              <td class="wrapper--book-delete">
+                  <button class="book-delete">Delete</button>
+              </td>
             </tr>`;
 }
 
@@ -157,8 +159,6 @@ function toggleStatus(e) {
   const parentID = e.target.closest('.book-row').dataset.id;
   const targetIndex = myLibrary.findIndex((book) => book.bookID === parentID);
   const targetBook = myLibrary[targetIndex];
-
-  const oldStatus = targetBook.status;
   const newStatus = e.target.value;
 
   targetBook.status = newStatus;
