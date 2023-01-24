@@ -314,3 +314,41 @@ footer {
 .hidden {
   visibility: hidden;
 }
+
+@media (max-width: 650px) {
+  .library--header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .library-catalog {
+    padding: 15px;
+    font-size: 0.8rem;
+  }
+
+  .library--add-book form {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+  }
+
+  fieldset,
+  .wrapper--book-author,
+  .wrapper--book-title {
+    width: 100%;
+  }
+
+  .btn--add-book {
+    margin-top: 20px;
+  }
+
+  .select--new-status {
+    width: 100px;
+  }
+
+  .book-delete {
+    width: 75px;
+    padding: 5px 0;
+  }
+}
