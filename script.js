@@ -59,6 +59,22 @@ function clearValue(...inputArr) {
   inputArr.forEach((input) => (input.value = ''));
 }
 
+function updateLogs() {
+  const booksRead = myLibrary.filter((book) => book.status === 'read');
+  const booksReading = myLibrary.filter((book) => book.status === 'reading');
+  const booksUnread = myLibrary.filter((book) => book.status === 'unread');
+
+  const readEl = document.querySelector('.log-read');
+  const readingEl = document.querySelector('.log-reading');
+  const unreadEl = document.querySelector('.log-unread');
+  const booksEl = document.querySelector('.log-amount');
+
+  readEl.textContent = booksRead.length || '0';
+  readingEl.textContent = booksReading.length || '0';
+  unreadEl.textContent = booksUnread.length || '0';
+  booksEl.textContent = myLibrary.length || '0';
+}
+
 function displayBooks() {
   const libTable = document.querySelector('.library-table');
   const tableBody = libTable.querySelector('tbody');
@@ -79,6 +95,9 @@ function displayBooks() {
 
   // Insert to tableBody
   tableBody.insertAdjacentHTML('afterbegin', libraryHTML.join(''));
+
+  // Update library logs
+  updateLogs();
 
   // Add event handlers
   document
