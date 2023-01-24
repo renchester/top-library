@@ -1,8 +1,11 @@
 'use strict';
 
-//  DOM Selectors
-
-const btnAddBook = document.querySelector('.btn--add-book');
+function Book(title, author, status) {
+  this.title = title;
+  this.author = author;
+  this.status = status;
+  this.bookID = `ID${Math.random().toString(16).slice(2)}`;
+}
 
 const myLibrary = [
   {
@@ -19,14 +22,76 @@ const myLibrary = [
   },
 ];
 
-function Book(title, author, status) {
-  // the constructor...
+/*
 
-  this.title = title;
-  this.author = author;
-  this.status = status;
-  this.bookID = `ID${Math.random().toString(16).slice(2)}`;
+DISPLAY FUNCTIONS
+
+*/
+
+function printBookHTML(book) {
+  return `<tr class="book-row" data-id="${book.bookID}">
+              <td class="book-title">${book.title}</td>
+              <td class="book-author">${book.author}y</td>
+              <td class="book-status status-${book.status}">
+                <select name="book_new-status" id="book_${
+                  book.bookID
+                }new-status"
+                class="select--new-status">
+                  <option value="read" ${
+                    book.status === 'read' ? 'selected' : ''
+                  } >Read</option>
+                  <option value="reading"  ${
+                    book.status === 'reading' ? 'selected' : ''
+                  }>Currently Reading</option>
+                  <option value="unread"  ${
+                    book.status === 'unread' ? 'selected' : ''
+                  }>Unread</option>
+                </select>
+              </td>  
+              <td class="book-delete">Delete</td>
+            </tr>`;
 }
+
+function clearHTML(el) {
+  el.innerHTML = '';
+}
+
+function clearValue(...inputArr) {
+  inputArr.forEach((input) => (input.value = ''));
+}
+
+function displayBooks() {
+  const libTable = document.querySelector('.library-table');
+  const tableBody = libTable.querySelector('tbody');
+  const libraryHTMl = [];
+
+  // Clear table body
+  clearHTML(tableBody);
+
+  // Generate HTML of the books to display
+  myLibrary.forEach((book) => {
+    const bookHTML = printBookHTML(book);
+    libraryHTMl.push(bookHTML);
+  });
+
+  // Insert to tableBody
+  tableBody.insertAdjacentHTML('afterbegin', libraryHTMl.join(''));
+
+  // Add event handlers
+  document
+    .querySelectorAll('.select--new-status')
+    .forEach((btn) => btn.addEventListener('change', toggleStatus));
+
+  document
+    .querySelectorAll('.book-delete')
+    .forEach((btn) => btn.addEventListener('click', deleteBook));
+}
+
+/*
+
+MAIN LIBRARY FUNCTIONS
+
+*/
 
 function addBookToLibrary(e) {
   e.preventDefault();
@@ -65,33 +130,6 @@ function addBookToLibrary(e) {
     .forEach((btn) => btn.addEventListener('click', deleteBook));
 }
 
-function displayBooks() {
-  const libTable = document.querySelector('.library-table');
-  const tableBody = libTable.querySelector('tbody');
-  const libraryHTMl = [];
-
-  // Clear table body
-  clearHTML(tableBody);
-
-  // Generate HTML of the books to display
-  myLibrary.forEach((book) => {
-    const bookHTML = printBookHTML(book);
-    libraryHTMl.push(bookHTML);
-  });
-
-  // Insert to tableBody
-  tableBody.insertAdjacentHTML('afterbegin', libraryHTMl.join(''));
-
-  // Add event handlers
-  document
-    .querySelectorAll('.select--new-status')
-    .forEach((btn) => btn.addEventListener('change', toggleStatus));
-
-  document
-    .querySelectorAll('.book-delete')
-    .forEach((btn) => btn.addEventListener('click', deleteBook));
-}
-
 function toggleStatus(e) {
   const parentID = e.target.closest('.book-row').dataset.id;
   const targetIndex = myLibrary.findIndex((book) => book.bookID === parentID);
@@ -111,7 +149,6 @@ function toggleStatus(e) {
 }
 
 function deleteBook(e) {
-  console.log('this works too');
   const parentID = e.target.closest('.book-row').dataset.id;
   const targetIndex = myLibrary.findIndex((book) => book.bookID === parentID);
 
@@ -120,48 +157,9 @@ function deleteBook(e) {
   displayBooks();
 }
 
-// DISPLAY FUNCTIONS
-
-function printBookHTML(book) {
-  return `<tr class="book-row" data-id="${book.bookID}">
-              <td class="book-title">${book.title}</td>
-              <td class="book-author">${book.author}y</td>
-              <td class="book-status status-${book.status}">
-                <select name="book_new-status" id="book_${
-                  book.bookID
-                }new-status"
-                class="select--new-status">
-                  <option value="read" ${
-                    book.status === 'read' ? 'selected' : ''
-                  } >Read</option>
-                  <option value="reading"  ${
-                    book.status === 'reading' ? 'selected' : ''
-                  }>Currently Reading</option>
-                  <option value="unread"  ${
-                    book.status === 'unread' ? 'selected' : ''
-                  }>Unread</option>
-                </select>
-              </td>  
-              <td class="book-delete">Delete</td>
-            </tr>`;
-}
-
-function clearHTML(el) {
-  el.innerHTML = '';
-}
-
-function clearValue(...inputArr) {
-  console.log(inputArr);
-
-  inputArr.forEach((input) => (input.value = ''));
-}
-
-// HELPER FUNCTIONS
-function capitalizeFirstLetter(str) {
-  return str[0] + str.slice(1).toLowerCase();
-}
-
 // Event Handlers
+
+const btnAddBook = document.querySelector('.btn--add-book');
 btnAddBook.addEventListener('click', addBookToLibrary);
 
 // init
