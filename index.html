@@ -13,6 +13,160 @@
     />
   </head>
   <body class="body">
+    <div class="library-container">
+      <div class="library--header">
+        <div class="library-logo">Library</div>
+        <div class="library-catalog">
+          <div class="log-amount--label">
+            Number of books:
+            <span class="log-amount">0</span>
+          </div>
+          <div class="log-read--label">
+            Books read:
+            <span class="log-read">0</span>
+          </div>
+          <div class="log-unread--label">
+            Books to be read:
+            <span class="log-unread">0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="library--add-book">
+        <form action="" method="" class="form--add-book">
+          <fieldset class="wrapper--book-title">
+            <label for="book_title">Title</label>
+            <input
+              type="text"
+              name="book_title"
+              id="book_title"
+              placeholder="The Little Prince"
+              required
+            />
+          </fieldset>
+          <fieldset class="wrapper--book-author">
+            <label for="book_author">Author</label>
+            <input
+              type="text"
+              name="book_author"
+              id="book_author"
+              placeholder="Antoine de Saint-Exupery"
+              required
+            />
+          </fieldset>
+          <fieldset class="wrapper--book-status">
+            <label for="book_status">Status</label>
+            <select name="book_status" id="book_status">
+              <option value="read">Read</option>
+              <option value="unread">Unread</option>
+            </select>
+          </fieldset>
+          <button type="submit" class="btn btn--add-book">Add Book</button>
+        </form>
+      </div>
+
+      <div class="library-display">
+        <table class="library-table">
+          <thead class="table-header">
+            <th class="header header-title">Title</th>
+            <th class="header header-author">Author</th>
+            <th class="header header-status">Status</th>
+          </thead>
+          <tbody>
+            <tr class="book-row">
+              <td class="book-title">The Brothers Karamazov</td>
+              <td class="book-author">Fyodor Dostoevsky</td>
+              <td class="book-status">Read</td>
+              <td class="book-delete">Delete</td>
+            </tr>
+            <tr class="book-row">
+              <td class="book-title">Phantom</td>
+              <td class="book-author">Simon White</td>
+              <td class="book-status">Read</td>
+              <td class="book-delete">Delete</td>
+            </tr>
+            <tr class="book-row">
+              <td class="book-title">
+                Really really really really really really long title
+              </td>
+              <td class="book-author">Fyodor Dostoevsky</td>
+              <td class="book-status">Read</td>
+              <td class="book-delete">Delete</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="modal--wrapper hidden">
+      <div class="modal--overlay"></div>
+      <div class="modal--new-book">
+        <button type="button" class="btn btn--close-modal">X</button>
+
+        <form action="" method="" class="modal--form">
+          <legend class="modal--label">Add a new book</legend>
+          <fieldset class="wrapper--book-title">
+            <label for="book_title">Title*:</label>
+            <input
+              type="text"
+              name="book_title"
+              id="book_title"
+              placeholder="The Little Prince"
+              required
+            />
+          </fieldset>
+          <fieldset class="wrapper--book-author">
+            <label for="book_author">Author*:</label>
+            <input
+              type="text"
+              name="book_author"
+              id="book_author"
+              placeholder="Antoine de Saint-Exupery"
+              required
+            />
+          </fieldset>
+          <fieldset class="wrapper--book-has-read">
+            <legend>Have you read this book?</legend>
+            <div class="wrapper--radio">
+              <input
+                type="radio"
+                name="book_has-read"
+                id="has-read"
+                value="has-read"
+                checked
+              />
+              <label for="has-read">Yes</label>
+            </div>
+            <div class="wrapper--radio">
+              <input
+                type="radio"
+                name="book_has-read"
+                id="not-read"
+                value="not-read"
+              />
+              <label for="not-read">No</label>
+            </div>
+          </fieldset>
+
+          <button type="submit" class="btn btn--add-book">Add Book</button>
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      <a
+        href="https://github.com/renchester"
+        target="_blank"
+        class="footer-link"
+        ><img
+          src="img/github-icon.png"
+          alt="Github icon"
+          width="25"
+          class="footer-img"
+        />
+        <p class="footer-desc">Developed by Renchester Ramos</p></a
+      >
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>
