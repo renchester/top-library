@@ -7,20 +7,19 @@ function Book(title, author, status) {
   this.bookID = `ID${Math.random().toString(16).slice(2)}`;
 }
 
-const myLibrary = [
-  {
-    title: 'The Brothers Karamazov',
-    author: 'Fyodor Dostoevsky',
-    status: 'read',
-    bookID: '123456',
-  },
-  {
-    title: 'Phantom',
-    author: 'Simon White',
-    status: 'read',
-    bookID: '654321',
-  },
-];
+let myLibrary = [];
+
+// LOCAL STORAGE
+
+function persistLibrary() {
+  localStorage.setItem('library', JSON.stringify(myLibrary));
+}
+
+function getLibraryFromStorage() {
+  let lib = JSON.parse(localStorage.getItem('library'));
+
+  return lib ? lib : null;
+}
 
 /*
 
@@ -63,7 +62,11 @@ function clearValue(...inputArr) {
 function displayBooks() {
   const libTable = document.querySelector('.library-table');
   const tableBody = libTable.querySelector('tbody');
-  const libraryHTMl = [];
+  const libraryHTML = [];
+
+  myLibrary = getLibraryFromStorage();
+
+  if (!myLibrary) return;
 
   // Clear table body
   clearHTML(tableBody);
@@ -71,11 +74,11 @@ function displayBooks() {
   // Generate HTML of the books to display
   myLibrary.forEach((book) => {
     const bookHTML = printBookHTML(book);
-    libraryHTMl.push(bookHTML);
+    libraryHTML.push(bookHTML);
   });
 
   // Insert to tableBody
-  tableBody.insertAdjacentHTML('afterbegin', libraryHTMl.join(''));
+  tableBody.insertAdjacentHTML('afterbegin', libraryHTML.join(''));
 
   // Add event handlers
   document
@@ -111,8 +114,9 @@ function addBookToLibrary(e) {
     inputStatus.value,
   );
 
-  // Push to library array
+  // Push to library array & set to local storage
   myLibrary.push(newBook);
+  persistLibrary();
 
   // Clear form
   clearValue(inputTitle, inputAuthor);
@@ -139,11 +143,7 @@ function toggleStatus(e) {
   const newStatus = e.target.value;
 
   targetBook.status = newStatus;
-
-  // Toggle display
-  e.target
-    .closest('.book-status')
-    .classList.replace(`status-${oldStatus}`, `status-${newStatus}`);
+  persistLibrary();
 
   displayBooks();
 }
@@ -152,13 +152,14 @@ function deleteBook(e) {
   const parentID = e.target.closest('.book-row').dataset.id;
   const targetIndex = myLibrary.findIndex((book) => book.bookID === parentID);
 
-  delete myLibrary[targetIndex];
+  myLibrary.splice(targetIndex, 1);
+
+  persistLibrary();
 
   displayBooks();
 }
 
 // Event Handlers
-
 const btnAddBook = document.querySelector('.btn--add-book');
 btnAddBook.addEventListener('click', addBookToLibrary);
 
