@@ -8,3 +8,190 @@
   margin: 0;
   box-sizing: border-box;
 }
+/* prettier-ignore */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+}
+
+/* prettier-ignore */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  position: relative;
+}
+
+/* LIBRARY CONTAINER */
+.library-container {
+  height: clamp(400px, 100vh, 1200px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.library-container > * {
+  padding: 30px;
+  border: 1px solid red;
+}
+
+.library--header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.library-logo {
+  padding: 10px;
+  border: 1px solid green;
+  font-size: 1.5rem;
+}
+
+.library-catalog {
+  padding: 15px;
+  border: 1px solid blue;
+}
+
+.library--add-book {
+}
+
+.library--add-book form {
+  display: flex;
+}
+
+.library-table {
+  width: 100%;
+  text-align: left;
+}
+
+.table-header .header {
+  padding: 10px 0;
+}
+
+.table-header tr {
+  border-bottom: 1px solid black;
+}
+
+.table-header .header {
+  font-weight: 600;
+}
+
+.book-row td {
+  padding: 10px;
+  width: 25%;
+}
+
+/* MODAL */
+.modal--wrapper {
+  position: absolute;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.modal--overlay {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.315);
+}
+
+.modal--new-book {
+  border: 1px solid red;
+  height: fit-content;
+  background-color: white;
+  padding: 20px;
+  z-index: 2;
+}
+
+.btn--add-book {
+  padding: 10px 20px;
+  background-color: yellow;
+}
+
+/* FOOTER */
+
+footer {
+  position: absolute;
+  top: calc(100% + 10px);
+  padding: 3em;
+  margin: auto;
+  width: 100%;
+}
+
+.footer-link {
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  bottom: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-link:link,
+.footer-link:visited {
+  text-decoration: none;
+}
+
+.footer-desc {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: black;
+  padding-left: 1em;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1rem;
+}
+
+/* HELPERS */
+
+.hidden {
+  visibility: hidden;
+}
