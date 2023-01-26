@@ -1,10 +1,12 @@
 'use strict';
 
-function Book(title, author, status) {
-  this.title = title;
-  this.author = author;
-  this.status = status;
-  this.bookID = `ID${Math.random().toString(16).slice(2)}`;
+class Book {
+  constructor(title, author, status) {
+    this.title = title;
+    this.author = author;
+    this.status = status;
+    this.bookID = `ID${Math.random().toString(16).slice(2)}`;
+  }
 }
 
 let myLibrary = [];
