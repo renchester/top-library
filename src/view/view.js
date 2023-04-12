@@ -2,6 +2,19 @@ const LibraryView = (() => {
   const btnAddBook = document.querySelector('.btn--add-book');
   const btnSignIn = document.querySelector('.btn--sign-in');
   const btnSignOut = document.querySelector('.btn--sign-out');
+  const accountDetailsEl = document.querySelector('.library--user');
+
+  function clearHTML(el) {
+    el.innerHTML = '';
+  }
+
+  function hideEl(el) {
+    el.classList.add('hidden');
+  }
+
+  function showEl(el) {
+    el.classList.remove('hidden');
+  }
 
   function addHandlerAddBook(handler) {
     btnAddBook.addEventListener('click', (e) => {
@@ -50,6 +63,46 @@ const LibraryView = (() => {
     );
   }
 
+  function addHandlerSignIn(handler) {
+    btnSignIn.addEventListener('click', () => {
+      handler();
+    });
+  }
+
+  function addHandlerSignOut(handler) {
+    btnSignOut.addEventListener('click', () => {
+      handler();
+    });
+  }
+
+  function printUserDetails(name, photoURL) {
+    return `
+       <img src=${photoURL} alt="User profile for ${name}" class="library--prof-pic" />
+       <h2 class="library-welcome">Hello, ${name}!</h2>
+    `;
+  }
+
+  function displayUserDetails(name, photoURL) {
+    // Toggle sign buttons
+    hideEl(btnSignIn);
+    showEl(btnSignOut);
+
+    clearHTML(accountDetailsEl);
+    accountDetailsEl.insertAdjacentHTML(
+      'afterbegin',
+      printUserDetails(name, photoURL),
+    );
+    showEl(accountDetailsEl);
+  }
+
+  function hideUserDetails() {
+    hideEl(btnSignOut);
+    showEl(btnSignIn);
+
+    hideEl(accountDetailsEl);
+    clearHTML(accountDetailsEl);
+  }
+
   const emptyBookRow = `
                 <tr class="book-row" data-id="123456">
                   <td>
@@ -83,10 +136,6 @@ const LibraryView = (() => {
                   <button class="book-delete">Delete</button>
               </td>
             </tr>`;
-  }
-
-  function clearHTML(el) {
-    el.innerHTML = '';
   }
 
   function updateLogs(libraryLogs) {
@@ -131,10 +180,14 @@ const LibraryView = (() => {
   }
 
   return {
+    addHandlerSignIn,
+    addHandlerSignOut,
     addHandlerAddBook,
     addHandlerChangeBookStatus,
     addHandlerDeleteBook,
     displayBooks,
+    displayUserDetails,
+    hideUserDetails,
   };
 })();
 
