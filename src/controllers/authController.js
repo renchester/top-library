@@ -9,6 +9,7 @@ import {
 import getFirebaseConfig from '../firebase-config';
 
 import LibraryView from '../view/view';
+import LibraryController from './libraryController';
 
 const AuthController = (() => {
   const firebaseConfig = getFirebaseConfig();
@@ -32,15 +33,22 @@ const AuthController = (() => {
     return auth.currentUser.displayName;
   }
 
+  function getUserID() {
+    return auth.currentUser.uid;
+  }
+
   function initializeAuth() {
-    onAuthStateChanged(auth, (authUser) => {
+    onAuthStateChanged(auth, async (authUser) => {
       if (authUser) {
         const photoURL = getProfilePhotoURL();
         const name = getUserName();
+        const userID = getUserID();
 
         LibraryView.displayUserDetails(name, photoURL);
+        LibraryController.initializeLibrary(userID, !!authUser);
       } else {
         LibraryView.hideUserDetails();
+        LibraryController.initializeLibrary('local', !!authUser);
       }
     });
 
@@ -52,23 +60,8 @@ const AuthController = (() => {
     signIn,
     signOutUser,
     initializeAuth,
+    getUserID,
   };
 })();
 
 export default AuthController;
-
-// export function getUserDetails() {
-//   if (user) {
-//     const { displayName, email, photoURL, emailVerified, uid } = user;
-
-//     return {
-//       displayName,
-//       email,
-//       photoURL,
-//       emailVerified,
-//       uid,
-//     };
-//   }
-
-//   return null;
-// }
