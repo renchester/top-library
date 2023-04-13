@@ -2,13 +2,20 @@
 
 # Project: Library
 
-**Live version** of the webapp can be found [here](https://renchester.github.io/top-library/)
+[**Live version** of the webapp can be found here](https://renchester.github.io/top-library/)
 
-This library app allows users to create a list of books that they are either reading, has read, or to be read. Built with HTML, CSS, and vanilla Javascript (also using the localStorage API to store user-input books).
+This library app allows users to create a list of books that they are either reading, has read, or yet to be read. Built with HTML, CSS, and vanilla Javascript--using Firebase as a backend to store user input.
 
 ### Features
 
-Users are provided with a form that asks for the book's title and author, as well as the book's 'read' status. This information is stored in an array `myLibrary` which is then stored in the browser's local storage--made available for the next time the user wants to add a new book or change the book's status. A log of the library contents is also provided for an overview of the user's reading habits.
+Users are provided with a form that asks for the book's title and author, as well as the book's 'read' status. This information is set in an array `myLibrary` to be uploaded to either the browser's local storage or to the cloud with Firebase's [Firestore Database](https://firebase.google.com/products/firestore). A log of the library contents is also provided for an overview of the user's reading habits.
+
+### Technologies Used
+
+- HTML
+- CSS
+- Vanilla Javascript
+- Firebase
 
 ### Display
 
@@ -16,4 +23,6 @@ The books input by the user is displayed in a table with the book's title and au
 
 ![view of the page](img/library-view.png)
 
-Developed by _Renchester Ramos_
+---
+
+Developed by **Renchester Ramos**
