@@ -1,8 +1,9 @@
 const LibraryView = (() => {
-  const btnAddBook = document.querySelector('.btn--add-book');
+  const formEl = document.querySelector('.form--add-book');
   const btnSignIn = document.querySelector('.btn--sign-in');
   const btnSignOut = document.querySelector('.btn--sign-out');
   const accountDetailsEl = document.querySelector('.library--user');
+  const displaySourceEl = document.querySelector('.display-source');
 
   function clearHTML(el) {
     el.innerHTML = '';
@@ -17,11 +18,10 @@ const LibraryView = (() => {
   }
 
   function addHandlerAddBook(handler) {
-    btnAddBook.addEventListener('click', (e) => {
+    formEl.addEventListener('submit', (e) => {
       e.preventDefault();
 
       // Get values from form input
-      const formEl = document.querySelector('.form--add-book');
       const formData = new FormData(formEl);
 
       const inputTitle = formData.get('book_title');
@@ -87,12 +87,16 @@ const LibraryView = (() => {
     hideEl(btnSignIn);
     showEl(btnSignOut);
 
+    // Show user details
     clearHTML(accountDetailsEl);
     accountDetailsEl.insertAdjacentHTML(
       'afterbegin',
       printUserDetails(name, photoURL),
     );
     showEl(accountDetailsEl);
+
+    // Change display title
+    displaySourceEl.textContent = `${name}'s cloud`;
   }
 
   function hideUserDetails() {
@@ -101,6 +105,8 @@ const LibraryView = (() => {
 
     hideEl(accountDetailsEl);
     clearHTML(accountDetailsEl);
+
+    displaySourceEl.textContent = `your browser's local storage`;
   }
 
   const emptyBookRow = `
@@ -169,7 +175,7 @@ const LibraryView = (() => {
     });
 
     // Insert to tableBody
-    if (libraryHTML.length < 1) {
+    if (libraryHTML.length <= 0) {
       tableBody.insertAdjacentHTML('afterbegin', emptyBookRow);
     } else {
       tableBody.insertAdjacentHTML('afterbegin', libraryHTML.join(''));
