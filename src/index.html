@@ -20,52 +20,52 @@
   </head>
   <body class="body">
     <div class="library-container">
-      <header class="library--header">
+      <header class="library--header" aria-labelledby="library-logo">
         <div class="library-title">
-          <div class="library-logo">Library App</div>
-          <div class="library-desc">
+          <h1 class="library-logo" id="library-logo">Library App</h1>
+          <h2 class="library-desc">
             Check out the
             <a href="https://github.com/renchester/top-library" target="_blank"
               >Github repository</a
             >
             of this project!
-          </div>
+          </h2>
         </div>
-        <div class="library--account-info">
-          <div class="library--user hidden">
+        <section class="library--account-info">
+          <article class="library--user hidden">
             <img src="#" alt="User profile" class="library--prof-pic" />
             <h2 class="library-welcome">Hello!</h2>
-          </div>
+          </article>
           <div class="library--btn-container">
             <button type="button" class="btn--log btn--sign-in">Sign In</button>
             <button type="button" class="btn--log btn--sign-out hidden">
               Sign Out
             </button>
           </div>
-        </div>
+        </section>
       </header>
 
-      <div class="library-catalog">
-        <div class="log-amount--label">
-          Number of books:
-          <span class="log-amount">0</span>
-        </div>
-        <div class="log-read--label">
-          Books read:
-          <span class="log-read">0</span>
-        </div>
-        <div class="log-reading--label">
-          Books currently reading:
-          <span class="log-reading">0</span>
-        </div>
-        <div class="log-unread--label">
-          Books to be read:
-          <span class="log-unread">0</span>
-        </div>
-      </div>
+      <section class="library-catalog">
+        <dl class="log-amount--wrapper">
+          <dt class="log-amount--label">Number of books:</dt>
+          <dd class="log-amount">0</dd>
+        </dl>
+        <dl class="log-read--wrapper">
+          <dt class="log-read--label">Books read:</dt>
+          <dd class="log-read">0</dd>
+        </dl>
+        <dl class="log-reading--wrapper">
+          <dt class="log-reading--label">Books currently reading:</dt>
+          <dd class="log-reading">0</dd>
+        </dl>
+        <dl class="log-unread--wrapper">
+          <dt class="log-unread--label">Books to be read:</dt>
+          <dd class="log-unread">0</dd>
+        </dl>
+      </section>
 
       <div class="library--add-book">
-        <form action="" method="" class="form--add-book">
+        <form action="" method="" class="form--add-book" id="form--add-book">
           <fieldset class="wrapper--book-title">
             <label for="book_title"
               >Title
@@ -103,10 +103,17 @@
             </select>
           </fieldset>
         </form>
-        <button type="submit" class="btn btn--add-book">Add Book</button>
+        <button type="submit" form="form--add-book" class="btn btn--add-book">
+          Add Book
+        </button>
       </div>
 
-      <div class="library-display">
+      <main class="library-display">
+        <h2 class="library-display--title">
+          Showing library from
+          <span class="display-source">...</span>
+        </h2>
+
         <table class="library-table">
           <thead class="table-header">
             <th class="header header-title">Title</th>
@@ -115,7 +122,7 @@
           </thead>
           <tbody></tbody>
         </table>
-      </div>
+      </main>
     </div>
 
     <footer>
